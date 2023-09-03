@@ -1,0 +1,171 @@
+CREATE USER BDSEGUIMIENTO IDENTIFIED BY BDSEGUIMIENTO;
+GRANT ALL PRIVILEGES TO BDSEGUIMIENTO;
+
+create user BODEGA IDENTIFIED by BODEGA account unlock;
+
+grant all PRIVILEGES to BODEGA;
+
+create user LIBRERIA IDENTIFIED by LIBRERIA account unlock;
+
+grant all PRIVILEGES to LIBRERIA;
+
+
+
+--------------------------------------------------------------------------------------------
+bdseguimiento
+
+CREATE TABLE INSPECCION(
+CODIGO INTEGER PRIMARY KEY,
+ESTADO VARCHAR(50) NOT NULL,
+DESCRIPCION VARCHAR(50)
+);
+
+
+
+CREATE SEQUENCE SEQ_INSPECCION
+    INCREMENT BY 1
+    START WITH 1
+    MAXVALUE 99999
+    NOCACHE
+    NOCYCLE;
+
+/*PROCEDIMIENTO DE AGREGAR*/
+CREATE OR REPLACE PROCEDURE SP_AGREGAR_INSPECCION(
+estado varchar,
+descripcion varchar)
+is
+begin
+insert into INSPECCION values(SEQ_INSPECCION.NEXTVAL, ESTADO, DESCRIPCION);
+end;
+
+/*PROCEDIMIENTO DE LISTAR*/
+CREATE OR REPLACE PROCEDURE SP_LISTAR_INSPECCION(inspecciones out SYS_REFCURSOR) 
+IS BEGIN
+    OPEN inspecciones FOR SELECT * FROM INSPECCION;
+END;
+
+call SP_AGREGAR_INSPECCION('Entregado','Pedido Entregado');
+call SP_AGREGAR_INSPECCION('EnCaminoo','Pedido Pedido en Camino');
+call SP_AGREGAR_INSPECCION('Preparacion','Pedido en Preparacion');
+
+SELECT * FROM INSPECCION;
+
+
+
+----------------------------------------------------------------------------
+bodega
+
+CREATE TABLE PRODUCTO(
+id integer primary key,
+nombre VARCHAR2(200) not null,
+descripcion VARCHAR2(200) not null,
+precio integer not null,
+stock integer not null,
+foto VARCHAR(200) not null
+);
+
+
+
+/*SECUENCIA PARA EL CODIGO DEL PRODUCTO*/
+CREATE SEQUENCE SEQ_PRODUCTO
+    INCREMENT BY 1
+    START WITH 1
+    MAXVALUE 99999
+    NOCACHE
+    NOCYCLE;
+
+CREATE OR REPLACE PROCEDURE SP_AGREGAR_PRODUCTO(
+  nombre varchar2,
+  descripcion varchar2,
+  precio integer,
+  stock integer,
+  foto varchar2
+)
+IS
+BEGIN
+  insert into PRODUCTO values(SEQ_PRODUCTO.NEXTVAL, nombre, descripcion, precio, stock, foto);
+END;
+
+
+/*PROCEDIMIENTO DE LISTAR*/
+CREATE OR REPLACE PROCEDURE SP_LISTAR_PRODUCTOS(productos out SYS_REFCURSOR) 
+IS BEGIN
+    OPEN productos FOR SELECT * FROM PRODUCTO;
+END;
+
+/*LIBROS DE EJEMPLO*/
+call SP_AGREGAR_PRODUCTO('Las aventuras de Sherlock Holmes','Arthur Conan Doyle',20000,5,'https://http2.mlstatic.com/D_NQ_NP_730807-MLC51350961810_082022-O.jpg');
+call SP_AGREGAR_PRODUCTO('El Principito','Antoine de Saint-Exupery', 15000,10,'https://images.cdn3.buscalibre.com/fit-in/360x360/f4/bc/f4bc25288107cfebe6a9cbc1e245c00a.jpg');
+call SP_AGREGAR_PRODUCTO('El Caleuche','Magdalena Petit', 19000,12,'https://imagessl1.casadellibro.com/a/l/t5/91/9789561222991.jpg');
+
+/*CONFIRMAR CAMBIOS*/
+commit;
+
+/*REVISAR LIBROS*/
+select * from PRODUCTO;
+
+------------------------------------------------------------------------------------------------------------------------------
+libreria
+
+/*TABLA LIBRO*/
+create table LIBRO(
+codigo integer primary key,
+titulo VARCHAR2(200) not null,
+autor VARCHAR2(200) not null,
+annio integer not null,
+precio integer not null,
+stock integer not null
+);
+
+
+/*SECUENCIA PARA EL CODIGO DEL LIBRO*/
+CREATE SEQUENCE SEQ_LIBRO
+    INCREMENT BY 1
+    START WITH 1
+    MAXVALUE 99999
+    NOCACHE
+    NOCYCLE;
+
+
+/*PROCEDIMIENTO DE AGREGAR*/
+CREATE OR REPLACE PROCEDURE SP_AGREGAR_LIBRO(
+titulo varchar2,
+autor varchar2,
+annio integer,
+precio integer,
+stock integer)
+is
+begin
+insert into LIBRO values(SEQ_LIBRO.NEXTVAL, titulo, autor, annio, precio, stock);
+end;
+
+/*PROCEDIMIENTO DE LISTAR*/
+CREATE OR REPLACE PROCEDURE SP_LISTAR_LIBROS(libros out SYS_REFCURSOR) 
+IS BEGIN
+    OPEN libros FOR SELECT * FROM LIBRO;
+END;
+
+/*LIBROS DE EJEMPLO*/
+call SP_AGREGAR_LIBRO('Las aventuras de Sherlock Holmes','Arthur Conan Doyle', 1892,20000,5);
+call SP_AGREGAR_LIBRO('El Principito','Antoine de Saint-Exupery', 1943,15000,10);
+call SP_AGREGAR_LIBRO('El Caleuche','Magdalena Petit', 1946,19000,12);
+
+/*CONFIRMAR CAMBIOS*/
+commit;
+
+/*REVISAR LIBROS*/
+select * from LIBRO ;
+
+-----------------------------------------------------------------------------------------------------------
+CREATE USER PAGO IDENTIFIED BY PAGO;
+GRANT ALL PRIVILEGES TO PAGO;
+
+CREATE TABLE tarjeta (
+    num_tarjeta      VARCHAR2(16) NOT NULL,
+    cvv              INTEGER NOT NULL,
+    dinero            INTEGER NOT NULL
+    );
+
+insert into TARJETA values('5555444433332222',141,150000);
+insert into TARJETA values('4444222266668888',674,10000);
+insert into TARJETA values('7777666655553333',765,50000);

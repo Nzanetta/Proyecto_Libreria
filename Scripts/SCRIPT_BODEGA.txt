@@ -1,0 +1,56 @@
+/*
+ALTER SESSION SET "_oracle_script"=True;
+
+create user BODEGA IDENTIFIED by BODEGA account unlock;
+
+grant all PRIVILEGES to BODEGA;*/
+
+
+/*TABLA ALPHILIA*/
+CREATE TABLE ALPHILIA(
+id integer primary key,
+nombre VARCHAR2(200) not null,
+descripcion VARCHAR2(200) not null,
+precio integer not null,
+stock integer not null
+
+);
+
+
+
+/*SECUENCIA PARA EL CODIGO DEL ALPHILIA*/
+CREATE SEQUENCE SEQ_ALPHILIA
+    INCREMENT BY 1
+    START WITH 1
+    MAXVALUE 99999
+    NOCACHE
+    NOCYCLE;
+
+CREATE OR REPLACE PROCEDURE SP_AGREGAR_ALPHILIA(
+  nombre varchar2,
+  descripcion varchar2,
+  precio integer,
+  stock integer
+)
+IS
+BEGIN
+  insert into ALPHILIA values(SEQ_PRODUCTO.NEXTVAL, nombre, descripcion, precio, stock);
+END;
+
+
+/*PROCEDIMIENTO DE LISTAR*/
+CREATE OR REPLACE PROCEDURE SP_LISTAR_ALPHILIA(alphilias out SYS_REFCURSOR) 
+IS BEGIN
+    OPEN alphilias FOR SELECT * FROM ALPHILIA;
+END;
+
+/*LIBROS DE EJEMPLO*/
+call SP_AGREGAR_ALPHILIA('Las aventuras de Sherlock Holmes','Arthur Conan Doyle',20000,5);
+call SP_AGREGAR_ALPHILIA('El Principito','Antoine de Saint-Exupery', 15000,10);
+call SP_AGREGAR_ALPHILIA('El Caleuche','Magdalena Petit', 19000,12);
+
+/*CONFIRMAR CAMBIOS*/
+commit;
+
+/*REVISAR LIBROS*/
+select * from ALPHILIA;
