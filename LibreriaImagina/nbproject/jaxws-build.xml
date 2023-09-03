@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+        *** GENERATED FROM jax-ws.xml - DO NOT EDIT !                             ***
+        *** TO MODIFY wsimport options USE Web Service node -> Edit WS Attributes ***
+        *** TO CHANGE TARGETS GENERATED TO jaxws-build.xml COPY THOSE             ***
+        *** TARGETS TO ../build.xml AND MODIFY THAT FILE INSTEAD                  ***
+
+        --><project xmlns:xalan="http://xml.apache.org/xslt" xmlns:webproject2="http://www.netbeans.org/ns/web-project/2" xmlns:jaxws="http://www.netbeans.org/ns/jax-ws/1">
+    <!--
+                ===================
+                JAX-WS WSGEN SECTION
+                ===================
+            -->
+    <!--
+                ===================
+                JAX-WS WSIMPORT SECTION
+                ===================
+            -->
+    <target name="wsimport-init" depends="init">
+        <fail if="${wsimport.bad.version}" message="WsImport ant task defined in the classpath ${j2ee.platform.wsimport.classpath} has a serious bug. See http://wiki.netbeans.org/MetroIssue for details."/>
+        <mkdir dir="${build.generated.sources.dir}/jax-ws"/>
+        <property name="j2ee.platform.wsimport.classpath" value="${libs.jaxws21.classpath}"/>
+        <taskdef name="wsimport" classname="com.sun.tools.ws.ant.WsImport">
+            <classpath path="${java.home}/../lib/tools.jar:${j2ee.platform.wsimport.classpath}:${javac.classpath}"/>
+        </taskdef>
+        <condition property="conf-dir" value="${conf.dir}/" else="">
+            <isset property="conf.dir"/>
+        </condition>
+    </target>
+    <target name="wsimport-client-wsseguimiento" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/wsseguimiento"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/wsseguimiento" destdir="${build.generated.dir}/jax-wsCache/wsseguimiento" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/wsseguimiento/wsdl/localhost_8080/WSEG/wsseguimiento.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/WSEG/wsseguimiento?WSDL" xnocompile="true" xendorsed="true" package="ws">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/wsseguimiento/wsdl/localhost_8080/WSEG/wsseguimiento.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/wsseguimiento"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/wsseguimiento">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-wsseguimiento" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/ws"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/wsseguimiento"/>
+    </target>
+    <target name="wsimport-client-WSLOGIN" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/WSLOGIN"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/WSLOGIN" destdir="${build.generated.dir}/jax-wsCache/WSLOGIN" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/WSLOGIN/wsdl/localhost_8080/Login/WSLOGIN.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/Login/WSLOGIN?WSDL" xnocompile="true" xendorsed="true" package="wss">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/WSLOGIN/wsdl/localhost_8080/Login/WSLOGIN.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/WSLOGIN"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/WSLOGIN">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-WSLOGIN" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/wss"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/WSLOGIN"/>
+    </target>
+    <target name="wsimport-client-BODEGA" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/BODEGA"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/BODEGA" destdir="${build.generated.dir}/jax-wsCache/BODEGA" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/BODEGA/wsdl/localhost_8080/BODEGA/BODEGA.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/BODEGA/BODEGA?WSDL" xnocompile="true" xendorsed="true" package="wsBODEGA">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/BODEGA/wsdl/localhost_8080/BODEGA/BODEGA.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/BODEGA"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/BODEGA">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-BODEGA" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/wsBODEGA"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/BODEGA"/>
+    </target>
+    <target name="wsimport-client-wsPago" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/wsPago"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/wsPago" destdir="${build.generated.dir}/jax-wsCache/wsPago" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/wsPago/wsdl/localhost_8080/WSPAGO/wsPago.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/WSPAGO/wsPago?WSDL" xnocompile="true" xendorsed="true" package="wsPAGO">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/wsPago/wsdl/localhost_8080/WSPAGO/wsPago.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/wsPago"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/wsPago">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-wsPago" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/wsPAGO"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/wsPago"/>
+    </target>
+    <target name="wsimport-client-wsBanco" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/wsBanco"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/wsBanco" destdir="${build.generated.dir}/jax-wsCache/wsBanco" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/wsBanco/wsdl/localhost_8080/WSBanco/wsBanco.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/WSBanco/wsBanco?WSDL" xnocompile="true" xendorsed="true" package="wsBANCO">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/wsBanco/wsdl/localhost_8080/WSBanco/wsBanco.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/wsBanco"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/wsBanco">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-wsBanco" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/wsBANCO"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/wsBanco"/>
+    </target>
+    <target name="wsimport-client-generate" depends="wsimport-client-wsseguimiento, wsimport-client-WSLOGIN, wsimport-client-BODEGA, wsimport-client-wsPago, wsimport-client-wsBanco"/>
+</project>

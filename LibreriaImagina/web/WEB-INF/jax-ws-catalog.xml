@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://localhost:8080/Login/WSLOGIN?WSDL" uri="wsdl/localhost_8080/Login/WSLOGIN.wsdl"/>
+    <system systemId="http://localhost:8080/Login/WSLOGIN?xsd=1" uri="wsdl/localhost_8080/Login/WSLOGIN.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/BODEGA/BODEGA?WSDL" uri="wsdl/localhost_8080/BODEGA/BODEGA.wsdl"/>
+    <system systemId="http://localhost:8080/BODEGA/BODEGA?xsd=1" uri="wsdl/localhost_8080/BODEGA/BODEGA.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/WSEG/wsseguimiento?WSDL" uri="wsdl/localhost_8080/WSEG/wsseguimiento.wsdl"/>
+    <system systemId="http://localhost:8080/WSEG/wsseguimiento?xsd=1" uri="wsdl/localhost_8080/WSEG/wsseguimiento.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/WSBanco/wsBanco?WSDL" uri="wsdl/localhost_8080/WSBanco/wsBanco.wsdl"/>
+    <system systemId="http://localhost:8080/WSBanco/wsBanco?xsd=1" uri="wsdl/localhost_8080/WSBanco/wsBanco.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/WSPAGO/wsPago?WSDL" uri="wsdl/localhost_8080/WSPAGO/wsPago.wsdl"/>
+    <system systemId="http://localhost:8080/WSPAGO/wsPago?xsd=1" uri="wsdl/localhost_8080/WSPAGO/wsPago.xsd_1.xsd"/>
+</catalog>
